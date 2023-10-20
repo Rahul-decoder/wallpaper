@@ -52,17 +52,21 @@ Widget wallPaper(List<PhotosModel> listPhotos, BuildContext context) {
 }
 
 Widget brandName() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Text(
-        "Wallpaper",
-        style: TextStyle(color: Colors.black87, fontFamily: 'Overpass'),
-      ),
-      Text(
-        "Hub",
-        style: TextStyle(color: Colors.blue, fontFamily: 'Overpass'),
-      )
-    ],
+  return Center(
+    child: Container(
+        child: RichText(
+            text: TextSpan(
+                text: "Wallpaper ",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Color.fromARGB(255, 231, 219, 187),
+                  fontWeight: FontWeight.bold,
+                ),
+                children: [
+          TextSpan(
+              text: "World",
+              style: TextStyle(
+                  color: Color.fromARGB(255, 151, 163, 169), fontSize: 24))
+        ]))),
   );
 }

@@ -4,6 +4,7 @@ import 'package:decoder_wallpaperapp/models/categorie_model.dart';
 import 'package:decoder_wallpaperapp/models/photos_model.dart';
 import 'package:decoder_wallpaperapp/view/categorie_screen.dart';
 import 'package:decoder_wallpaperapp/view/search_view.dart';
+import 'package:decoder_wallpaperapp/widget/changethemebutton.dart';
 import 'package:decoder_wallpaperapp/widget/widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<CategorieModel> categories = [];
 
-  int noOfImageToLoad = 30;
+  int noOfImageToLoad = 100;
   List<PhotosModel> photos = [];
-
   getTrendingWallpaper() async {
     await http.get(
         "https://api.pexels.com/v1/curated?per_page=$noOfImageToLoad&page=1",
@@ -71,11 +71,20 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => CategorieScreen()));
+        },
+        backgroundColor: Color.fromARGB(255, 197, 202, 202),
+      ),
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 151, 146, 146),
         title: brandName(),
         elevation: 0.0,
+        actions: [ChangeThemeButtonWidget()],
       ),
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -85,7 +94,7 @@ class _HomeState extends State<Home> {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Color(0xfff5f8fd),
+                  color: Color.fromARGB(255, 211, 217, 229),
                   borderRadius: BorderRadius.circular(30),
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 24),
@@ -95,7 +104,7 @@ class _HomeState extends State<Home> {
                     Expanded(
                         child: TextField(
                       controller: searchController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: "search wallpapers",
                           border: InputBorder.none),
                     )),

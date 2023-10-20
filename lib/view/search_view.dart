@@ -50,6 +50,7 @@ class _SearchViewState extends State<SearchView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 56, 49, 49),
         title: brandName(),
         elevation: 0.0,
         actions: <Widget>[
@@ -87,7 +88,14 @@ class _SearchViewState extends State<SearchView> {
                     )),
                     InkWell(
                         onTap: () {
-                          getSearchWallpaper(searchController.text);
+                          if (searchController.text != "") {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SearchView(
+                                          search: searchController.text,
+                                        )));
+                          }
                         },
                         child: Container(child: Icon(Icons.search)))
                   ],

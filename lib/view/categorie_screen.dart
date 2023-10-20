@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:decoder_wallpaperapp/models/photos_model.dart';
+import 'package:decoder_wallpaperapp/widget/changethemebutton.dart';
 import 'package:decoder_wallpaperapp/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -48,15 +49,13 @@ class _CategorieScreenState extends State<CategorieScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 151, 146, 146),
         title: brandName(),
         elevation: 0.0,
         actions: <Widget>[
           Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
-              ))
+              child: ChangeThemeButtonWidget())
         ],
       ),
       body: SingleChildScrollView(
